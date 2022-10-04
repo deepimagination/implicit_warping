@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- <meta charset="utf-8"> -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="data/favicon.ico">
+
+    <title>Implicit Warping for Animation with Image Sets</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
+    <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/gh/jablonczay/code-box-copy/code-box-copy/css/code-box-copy.min.css"
+        rel="stylesheet" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <style>
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            padding-bottom: 50px;
+        }
+
+        th {
+            width: 20%;
+            /* height: 200px; */
+            display: table-cell;
+            padding: 0;
+            margin: 0;
+        }
+
+        td {
+            padding: 0;
+            width: 20%;
+            /* height: 200px; */
+            margin: 0;
+            /* display: inline; */
+        }
+
+
+        /* table {
+      border-collapse: collapse;
+      border-spacing: 0;
+    } */
+
+        hr {
+            background: #80808083;
+        }
+
+        .embed-responsive-2by1 {
+            padding-bottom: 50%;
+        }
+
+        .embed-responsive-4by1 {
+            padding-bottom: 25%;
+        }
+
+        .embed-responsive-6by1 {
+            padding-bottom: 16.67%;
+        }
+
+        .embed-responsive-8by1 {
+            padding-bottom: 12.50%;
+        }
+
+        .embed-responsive-teaser {
+            padding-bottom: 29%;
+        }
+
+        .float-button {
+            position: fixed;
+            right: 1%;
+            z-index: 9999;
+        }
+
+        .vert {
+            transform-origin: 50% 50%;
+            transform: rotate(180deg);
+            writing-mode: vertical-rl;
+            margin: 0;
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        .caption {
+            font-size: 0.9rem;
+            margin-top: 0;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .w-85 {
+            width: 85% !important;
+        }
+
+        img {
+            width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        video {
+            width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <main role="main">
+
+            <section class="jumbotron text-center" style="padding: 2%; padding-bottom: 1%; background-color: #e6e9ec;">
+                <div class="container">
+                    <h1 class="jumbotron-heading">Implicit Warping for Animation with Image Sets</h1>
+                </div>
+
+                <div class="container" style="max-width: 768px;">
+                    <div class="row">
+                        <div class="col-md">
+                            <h5 id="authors" class="text-center" style="margin: 0px;"><a class="text-center"
+                                    href="http://arunmallya.github.io/" target="_blank">Arun Mallya<span
+                                        style="color: #76b900;"></span></a></h5>
+                        </div>
+                        <div class="col-md">
+                            <h5 id="authors" class="text-center" style="margin: 0px;"><a class="text-center"
+                                    href="https://tcwang0509.github.io/" target="_blank">Ting-Chun Wang<span
+                                        style="color: #76b900;"></span></a></h5>
+                        </div>
+                        <div class="col-md">
+                            <h5 id="authors" class="text-center" style="margin: 0px;"><a class="text-center"
+                                    href="http://mingyuliu.net/" target="_blank">Ming-Yu Liu<span
+                                        style="color: #76b900;"></span></a></h5>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:0.75%; margin-left: auto; margin-right: auto;width: 50%;">
+                        <div class="col-md">
+                            <h5 style="color: #76b900; margin-bottom: 0;"><a class="text-center"
+                                    href="https://www.nvidia.com/en-us/research/" target="_blank"
+                                    style="color: #76b900;"><b>NVIDIA</b></a></h5>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:0.5rem; margin-left: auto; margin-right: auto;">
+                        <div class="col-md">
+                            <h5><b>NeurIPS 2022</b></h5>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="buttons">
+                    <a href="https://arxiv.org/abs/2104.07659" target="_blank" class="btn btn-primary my-2">Paper</a>
+                    <a href="video_viewer.html" target="_blank" class="btn btn-secondary my-2"
+                        style="background-color: #75b900c0;">Additional results</a>
+                    <!-- <a href="#top" target="_blank" class="btn btn-primary my-2">Paper (embedded videos)</a> -->
+                    <a href="https://github.com/NVlabs/imaginaire" target="_blank" class="btn btn-secondary my-2">Code
+                        (coming soon)</a>
+                    </p>
+                </div>
+
+                <div class="container" style="max-width: 900px;">
+                    <div class="row">
+                        <div class="col-md">
+                            <p>
+                                We present a new <b style="color: #76b900;">implicit warping</b> framework for image
+                                animation
+                                using sets
+                                of
+                                source
+                                images through the transfer of the motion of a driving video. A single cross-modal
+                                attention layer is used to find correspondences between the source images and the
+                                driving image, choose the most appropriate features from different source images, and
+                                warp the selected features. This is in contrast to the existing methods that use
+                                explicit flow-based warping, which is designed for animation using a single source and
+                                does not extend well to multiple sources. The pick-and-choose capability of our
+                                framework helps it achieve state-of-the-art results on multiple datasets for image
+                                animation using both single and multiple source images.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <h6 class="text-center"><b>Driving video reconstruction with multiple source images</b></h6>
+                    </div>
+                    <table>
+                        <tr>
+                            <th>Source images</th>
+                            <th>Driving video</th>
+                            <th><a href='https://aliaksandrsiarohin.github.io/first-order-model-website/'
+                                    target='_blank'>FOMM</a></th>
+                            <th><a href='https://nvlabs.github.io/face-vid2vid/' target='_blank'>fv2v</a></th>
+                            <th>Ours</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img style="vertical-align: top;" src="data/th/multi_iframe/sources.jpg">
+                            </td>
+                            <td colspan="4">
+                                <video controls muted loop style="vertical-align: top;">
+                                    <source
+                                        src="data/th/multi_iframe/face-vid2vid-eval-batch02_long-E8G7zipy6bM_0056_start271_end1112_h732_w732-0000001.mp4"
+                                        type="video/mp4">
+                                </video>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img style="vertical-align: top;" src="data/th/cross_id_multi_iframe/source.jpg">
+                            </td>
+                            <td colspan="4">
+                                <video controls muted loop style="vertical-align: top;">
+                                    <source src="data/th/cross_id_multi_iframe/driving_1.mp4" type="video/mp4">
+                                </video>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="col-md-12">
+                    </div>
+                </div>
+
+            </section>
+        </main>
+
+        <!-- TL;DR floating button -->
+        <!-- <div class="float-button">
+            <p class="float-right">
+                <a href="#Summary">TL;DR</a>
+            </p>
+        </div> -->
+
+        <!-- Summary video -->
+        <!-- <div class="container" style="max-width: 768px;">
+            <h5 class="text-center">ICCV 2021 Oral Presentation Video</h5>
+            <div class="embed-responsive embed-responsive-16by9" style="margin: 0;">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/5K-AgDmCtt0"
+                    allowfullscreen></iframe>
+            </div>
+            </br>
+            <h5 class="text-center">Previous Summary Video</h5>
+            <div class="embed-responsive embed-responsive-16by9" style="margin: 0;">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/1Hky092CGFQ?mute=1"
+                    allowfullscreen></iframe>
+            </div>
+            </br>
+        </div> -->
+
+        <!-- Overview -->
+        <hr style="max-width: 768px;">
+        <div class="container" style="max-width: 768px;">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Overview</h2>
+                    <!-- What is the task of vid2vid? -->
+                    <h5 class="text-center">What exactly is Implicit Warping trying to solve?</h5>
+                    A single image often cannot fully describe the subject due to occlusions, limited pose information,
+                    <i>etc</i>. Diverse source images provide more appearance information and reduce the burden of
+                    hallucination that an image generator has to perform. Multiple source images provide more complete
+                    information, such as the color of the eyes, the texture of the background, <i>etc</i>. This allows
+                    for
+                    potentially generating an output image that is more faithful to the source setting. Consider the two
+                    images shown below. Given just the first image, it is impossible to know what is behind the person.
+                    But given the second image, we now know the real background.
+
+                    <div class="text-center" style="color: #76b900;">Implicit Warping allows you to pick-and-choose
+                        features from multiple images to produce the output</div>
+                </div>
+            </div>
+            </br>
+            <div class="row">
+                <img src="data/ted/multi_iframe/halfbody_eval-ted_talk-0R9zjn9BBvA_S-6194_E-6354_H-625_W-626-000000.mp4_sources.jpg"
+                    style="width: 60%; margin: auto; margin-bottom: 8px;">
+            </div>
+
+
+            <!-- Issues with prior work. -->
+            <div class="row">
+                <div class="col-md-12">
+                    <hr style="max-width: 768px;">
+                    <h5 class="text-center">The "<i>Why don't you just use X?</i> " Question</h5>
+                    Single-source-based prior works such as <a
+                        href='https://aliaksandrsiarohin.github.io/first-order-model-website/' target='_blank'>FOMM</a>,
+                    <a href='https://snap-research.github.io/articulated-animation/' target='_blank'>AA-PCA</a>, and <a
+                        href='https://nvlabs.github.io/face-vid2vid/' target='_blank'>fv2v</a> rely on
+                    explicit flow-based warping of the source image
+                    conditional on the pose of the driving image. Due to this architectural choice, they often have to
+                    be modified in ad-hoc ways to take advantage of multiple source images. One scheme is to train an
+                    additional pre-processing network to select the most appropriate source image for the given driving
+                    image. This would, however, not allow for the use of features from multiple source images at a time.
+                    The other possibility is to warp each source image to the driving pose and then average the
+                    now-aligned warped features for the generator input. But as is visible in videos below, this leads
+                    to sub-optimal results due to the misalignment of warped features and
+                    inconsistent predictions across views.
+                </div>
+            </div>
+            </br>
+            <div class="row">
+                <div class="col text-center" style="margin:auto; width: 5%;">Source images</div>
+                <div class="col text-center" style="margin:auto; width: 21%;">Driving video</div>
+                <div class="col text-center" style="margin:auto; width: 21%;">Ours</div>
+                <div class="col text-center" style="margin:auto; width: 21%;"><a
+                        href='https://aliaksandrsiarohin.github.io/first-order-model-website/' target='_blank'>FOMM</a>
+                </div>
+                <div class="col text-center" style="margin:auto; width: 21%;"><b>Ours</b></div>
+            </div>
+            <div class="row">
+                <div class="col text-center" style="margin:auto; width: 5%;"></div>
+                <div class="col text-center" style="margin:auto; width: 21%;"></div>
+                <div class="col text-center" style="margin:auto; width: 21%;">(single source)</div>
+                <div class="col text-center" style="margin:auto; width: 21%;"></div>
+                <div class="col text-center" style="margin:auto; width: 21%;"></div>
+            </div>
+            <div class="row">
+                <div style="margin: 0; width: 20%;">
+                    <img
+                        src="data/ted/multi_iframe/halfbody_eval-ted_talk-0R9zjn9BBvA_S-6194_E-6354_H-625_W-626-000000.mp4_sources_v.jpg">
+                </div>
+                <div class="embed-responsive" style="padding-bottom: 20%; margin: 0; width: 80%">
+                    <video controls autoplay playsinline muted loop class="embed-responsive-item">
+                        <source
+                            src="data/ted/multi_iframe/halfbody_eval-ted_talk-0R9zjn9BBvA_S-6194_E-6354_H-625_W-626-000000.mp4"
+                            type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            </br></br>
+
+            <div class="row">
+                <div class="col text-center" style="margin:auto; width: 5%;">Source images</div>
+                <div class="col text-center" style="margin:auto; width: 21%;">Driving video</div>
+
+                <div class="col text-center" style="margin:auto; width: 21%;"><a
+                        href='https://aliaksandrsiarohin.github.io/first-order-model-website/' target='_blank'>FOMM</a>
+                </div>
+                <div class="col text-center" style="margin:auto; width: 21%;"><a
+                        href='https://nvlabs.github.io/face-vid2vid/' target='_blank'>fv2v</a></div>
+                <div class="col text-center" style="margin:auto; width: 21%;"><b>Ours</b></div>
+            </div>
+            <div class="row">
+                <div style="margin: 0; width: 20%;">
+                    <img
+                        src="data/th/multi_iframe/face-vid2vid-eval-batch02_long-cYAaHJ9WUXs_0020_start553_end686_h805_w805-0000001.mp4_sources_v.jpg">
+                </div>
+                <div class="embed-responsive" style="padding-bottom: 20%; margin: 0; width: 80%">
+                    <video controls autoplay playsinline muted loop class="embed-responsive-item">
+                        <source
+                            src="data/th/multi_iframe/face-vid2vid-eval-batch02_long-cYAaHJ9WUXs_0020_start553_end686_h805_w805-0000001.mp4.mp4"
+                            type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            </br>
+            <div class="row">
+                <div class="col-md-12">
+                    Comparing the results from different methods, we can immediately notice a few issues:
+                    <ul>
+                        <li>
+                            Methods developed for a single source image, such as <a
+                                href='https://nvlabs.github.io/face-vid2vid/' target='_blank'>fv2v</a> and <a
+                                href='https://aliaksandrsiarohin.github.io/first-order-model-website/'
+                                target='_blank'>FOMM</a> are unable to exactly align features warped from different
+                            source images
+                        </li>
+                        <li>
+                            Furthermore, simple averaging of warped features produces artifacts in the output. This is
+                            because averaging does not distinguish between ground truth features and hallucinated
+                            features.
+                        </li>
+                    </ul>
+                    In the last column, we present results from <b style="color: #76b900;">implicit warping</b>, which
+                    solves both issues raised above. The cross-modal attention layer is able to select the
+                    appropriate features and produce an output free of artifacts.
+                    <br>
+                    Additional results and visualizations are available <a style="color: #76b900;"
+                        href='video_viewer.html' target='_blank'>at this link</a>.
+                </div>
+            </div>
+
+
+
+            <!-- Summary. -->
+            <!-- <hr style="max-width: 768px;">
+            <div class="container" style="max-width: 768px;" id="Summary">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>Summary</h2>
+                        <ul>
+                            <li>GANcraft is a powerful tool for converting semantic block worlds to photorealistic
+                                worlds
+                                without the need for ground truth data.</li>
+                            <li>Existing methods perform poorly on the task due to the lack of viewpoint consistency and
+                                photorealism.</li>
+                            <li>GANcraft performs well in this challenging world-to-world setting where the ground truth
+                                is
+                                unavailable and the distribution mismatch between a Minecraft world and internet photos
+                                is
+                                significant.</li>
+                            <li>We introduce a new training scheme which uses pseudo-ground truth. This improves the
+                                quality
+                                of the results significantly.</li>
+                            <li>We introduce a hybrid neural rendering pipeline which is able to represent large and
+                                complex
+                                scenes efficiently.</li>
+                            <li>We are able to control the appearance of the GANcraft results by using
+                                style-conditioning
+                                images.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- Citation. -->
+            <hr style="max-width: 768px;">
+            <div class="container" style="max-width: 768px;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>Citation</h2>
+                    </div>
+                </div>
+                <div class="code-box-copy" style="font-size: 0.9rem !important; max-width: 768px; margin: 0 auto;">
+                    <button class="code-box-copy__btn" data-clipboard-target="#citation" title="Copy"
+                        style="opacity: 1;"></button>
+                    <pre><code class="language-bib" style="font-size: 0.9rem;" id="citation">@inproceedings{mallya2022implicit,
+    title={{Implicit Warping for Animation with Image Sets}},
+    author={Arun Mallya and Ting-Chun Wang and Ming-Yu Liu},
+    booktitle={NeurIPS},
+    year={2022}
+}</code></pre>
+                </div>
+            </div>
+
+
+            <footer class="text-muted">
+                <div class="container">
+                    <p class="float-right">
+                        <a href="#">Back to top</a>
+                    </p>
+                </div>
+            </footer>
+
+            <!-- Bootstrap core JavaScript
+    ================================================== -->
+            <!-- Placed at the end of the document so the pages load faster -->
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+                integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+                crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                crossorigin="anonymous"></script>
+            <script type="text/javascript" async
+                src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+            <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+            <script
+                src="https://cdn.jsdelivr.net/combine/gh/jablonczay/code-box-copy/clipboard/clipboard.min.js,gh/jablonczay/code-box-copy/code-box-copy/js/code-box-copy.min.js"></script>
+            <script src="https://saswatpadhi.github.io/prismjs-bibtex/prism-bibtex.min.js"></script>
+            <script>
+                (function ($) {
+                    $('.code-box-copy').codeBoxCopy();
+                })(jQuery);
+            </script>
+</body>
+
+</html>

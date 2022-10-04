@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <link rel="icon" href="data/favicon.ico">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="data/bootstrap.min.css">
+
+    <style>
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            padding-bottom: 50px;
+        }
+
+        th {
+            width: 20%;
+            /* height: 200px; */
+            display: table-cell;
+            padding: 0;
+            margin: 0;
+        }
+
+        td {
+            padding: 0;
+            width: 20%;
+            /* height: 200px; */
+            margin: 0;
+            /* display: inline; */
+        }
+
+
+        /* table {
+      border-collapse: collapse;
+      border-spacing: 0;
+    } */
+
+        hr {
+            background: #80808083;
+        }
+
+        .embed-responsive-2by1 {
+            padding-bottom: 50%;
+        }
+
+        .embed-responsive-4by1 {
+            padding-bottom: 25%;
+        }
+
+        .embed-responsive-6by1 {
+            padding-bottom: 16.67%;
+        }
+
+        .embed-responsive-8by1 {
+            padding-bottom: 12.50%;
+        }
+
+        .embed-responsive-teaser {
+            padding-bottom: 29%;
+        }
+
+        .float-button {
+            position: fixed;
+            right: 1%;
+            z-index: 9999;
+        }
+
+        .vert {
+            transform-origin: 50% 50%;
+            transform: rotate(180deg);
+            writing-mode: vertical-rl;
+            margin: 0;
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        .caption {
+            font-size: 0.9rem;
+            margin-top: 0;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .w-85 {
+            width: 85% !important;
+        }
+
+        img {
+            width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        video {
+            width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="jumbotron text-center" style="padding: 2%; padding-bottom: 1%; background-color: #e6e9ec;">
+        <div class="container">
+            <h2 class="jumbotron-heading"><a style="color: #76b900;" href="index.html">Implicit Warping for Animation
+                    with Image Sets</a></br>
+                Additional results and visualizations</h2>
+        </div>
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <hr>
+                    <h5 class="text-center">TalkingHead1KH results</h5>
+                </div>
+
+                <div class="col-md-12">
+                    <h6 class="text-center">Driving video reconstruction with single source image</h6>
+                </div>
+                <table>
+                    <tr>
+                        <th>Source image</th>
+                        <th>Driving video</th>
+                        <th>FOMM</th>
+                        <th>fv2v</th>
+                        <th>Ours</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img style="vertical-align: top;"
+                                src="data/th/single_iframe/face-vid2vid-eval-batch02_long-GyOOyPTWRB4_0056_start305_end656_h879_w879-0000001.mp4_sources.jpg">
+                        </td>
+                        <td colspan="4">
+                            <video controls muted loop style="vertical-align: top;">
+                                <source
+                                    src="data/th/single_iframe/face-vid2vid-eval-batch02_long-GyOOyPTWRB4_0056_start305_end656_h879_w879-0000001.mp4.mp4"
+                                    type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img style="vertical-align: top;"
+                                src="data/th/single_iframe/face-vid2vid-eval-batch02_long-PwsatXwPonc_0002_start618_end770_h837_w838-0000001.mp4_sources.jpg">
+                        </td>
+                        <td colspan="4">
+                            <video controls muted loop style="vertical-align: top;">
+                                <source
+                                    src="data/th/single_iframe/face-vid2vid-eval-batch02_long-PwsatXwPonc_0002_start618_end770_h837_w838-0000001.mp4.mp4"
+                                    type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img style="vertical-align: top;"
+                                src="data/th/single_iframe/face-vid2vid-eval-batch02_long-9ln0PVJI60Q_0006_start811_end980_h799_w799-0000001.mp4_sources.jpg">
+                        </td>
+                        <td colspan="4">
+                            <video controls muted loop style="vertical-align: top;">
+                                <source
+                                    src="data/th/single_iframe/face-vid2vid-eval-batch02_long-9ln0PVJI60Q_0006_start811_end980_h799_w799-0000001.mp4.mp4"
+                                    type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img style="vertical-align: top;"
+                                src="data/th/single_iframe/face-vid2vid-eval-batch02_long-aGrouGaa8bI_0015_start378_end1137_h732_w732-0000001.mp4_sources.jpg">
+                        </td>
+                        <td colspan="4">
+                            <video controls muted loop style="vertical-align: top;">
+                                <source
+                                    src="data/th/single_iframe/face-vid2vid-eval-batch02_long-aGrouGaa8bI_0015_start378_end1137_h732_w732-0000001.mp4.mp4"
+                                    type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Source image</th>
+                        <th>Driving video</th>
+                        <th>FOMM</th>
+                        <th>fv2v</th>
+                        <th>Ours</th>
+                    </tr>
+                </table>
+                <div class="col-md-12">
+                </div>
+
+                </br></br>
+                <div class="col-md-12">
+                    <h6 class="text-center">Driving video reconstruction with multiple source images</h6>
+                </div>
+                <table>
+                    <tr>
+                        <th>Source images</th>
+                        <th>Driving video</th>
+                        <th>FOMM</th>
+                        <th>fv2v</th>
+                        <th>Ours</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img style="vertical-align: top;" src="data/th/multi_iframe/sources.jpg">
+                        </td>
+                        <td colspan="4">
+                            <video controls muted loop style="vertical-align: top;">
+                                <source
+                                    src="data/th/multi_iframe/face-vid2vid-eval-batch02_long-E8G7zipy6bM_0056_start271_end1112_h732_w732-0000001.mp4"
+                                    type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img style="vertical-align: top;"
+                                src="data/th/multi_iframe/face-vid2vid-eval-batch02_long-Boj9eD0Wug8_0040_start220_end672_h743_w743-0000001.mp4_sources.jpg">
+                        </td>
+                        <td colspan="4">
+                            <video controls muted loop style="vertical-align: top;">
+                                <source
+                                    src="data/th/multi_iframe/face-vid2vid-eval-batch02_long-Boj9eD0Wug8_0040_start220_end672_h743_w743-0000001.mp4.mp4"
+                                    type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img style="vertical-align: top;"
+                                src="data/th/multi_iframe/face-vid2vid-eval-batch02_long-cYAaHJ9WUXs_0020_start553_end686_h805_w805-0000001.mp4_sources.jpg">
+                        </td>
+                        <td colspan="4">
+                            <video controls muted loop style="vertical-align: top;">
+                                <source
+                                    src="data/th/multi_iframe/face-vid2vid-eval-batch02_long-cYAaHJ9WUXs_0020_start553_end686_h805_w805-0000001.mp4.mp4"
+                                    type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img style="vertical-align: top;"
+                                src="data/th/multi_iframe/face-vid2vid-eval-batch02_long-dYGizDcAx2U_0002_start236_end328_h725_w725-0000001.mp4_sources.jpg">
+                        </td>
+                        <td colspan="4">
+                            <video controls muted style="vertical-align: top;">
+                                <source
+                                    src="data/th/multi_iframe/face-vid2vid-eval-batch02_long-dYGizDcAx2U_0002_start236_end328_h725_w725-0000001.mp4.mp4"
+                                    type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Source images</th>
+                        <th>Driving video</th>
+                        <th>FOMM</th>
+                        <th>fv2v</th>
+                        <th>Ours</th>
+                    </tr>
+                </table>
+                <div class="col-md-12">
+                </div>
+
+                </br></br>
+                <div class="col-md-12">
+                    <h6 class="text-center">Cross-identity motion transfer</h6>
+                </div>
+                <table>
+                    <tr>
+                        <th>Source image(s)</th>
+                        <th>Driving video</th>
+                        <th>FOMM</th>
+                        <th>fv2v</th>
+                        <th>Ours</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img style="vertical-align: top;" src="data/th/cross_id_multi_iframe/source.jpg">
+                        </td>
+                        <td colspan="4">
+                            <video controls muted loop style="vertical-align: top;">
+                                <source src="data/th/cross_id_multi_iframe/driving_1.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img style="vertical-align: top;" src="data/th/cross_id_multi_iframe/source.jpg">
+                        </td>
+                        <td colspan="4">
+                            <video controls muted loop style="vertical-align: top;">
+                                <source src="data/th/cross_id_multi_iframe/driving_2.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img style="vertical-align: top;" src="data/th/cross_id_multi_iframe/driving_3.jpg">
+                        </td>
+                        <td colspan="4">
+                            <video controls muted loop style="vertical-align: top;">
+                                <source src="data/th/cross_id_multi_iframe/driving_3.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Source image(s)</th>
+                        <th>Driving video</th>
+                        <th>FOMM</th>
+                        <th>fv2v</th>
+                        <th>Ours</th>
+                    </tr>
+                </table>
+                <div class="col-md-12">
+                </div>
+
+                </br></br>
+                <div class="col-md-12">
+                    <h6 class="text-center">Keypoint location and strength visualization</h6>
+                </div>
+                <table>
+                    <tr>
+                        <td>
+                            <video controls muted loop style="vertical-align: top; width:48%;">
+                                <source
+                                    src="data/th/kps/face-vid2vid-eval-batch02_long-GGtWwln491U_0008_start231_end1256_h798_w798-0000001.mp4_kps.mp4"
+                                    type="video/mp4">
+                            </video>
+                            <video controls muted loop style="vertical-align: top; width:48%;">
+                                <source
+                                    src="data/th/kps/face-vid2vid-eval-batch02_long-08RoXYz9_UU_0037_start0_end1026_h763_w763-0000001.mp4_kps.mp4"
+                                    type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <video controls muted loop style="vertical-align: bottom; width:48%;">
+                                <source src="data/th/kps/00-0000001.mp4_kps.mp4" type="video/mp4">
+                            </video>
+                            <video controls muted loop style="vertical-align: top; width:48%;">
+                                <source
+                                    src="data/th/kps/face-vid2vid-eval-batch02_long-KLpT8BfpDfM_0003_start464_end1609_h781_w781-0000001.mp4_kps.mp4"
+                                    type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                </table>
+                <div class="col-md-12">
+                </div>
+            </div>
+            </br>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <hr>
+                    <h5 class="text-center">TED Talk results</h5>
+                </div>
+
+                <div class="col-md-12">
+                    <h6 class="text-center">Driving video reconstruction with single source</h6>
+                </div>
+                <table>
+                    <tr>
+                        <th>Source image</th>
+                        <th>Driving video</th>
+                        <th>FOMM</th>
+                        <th>AA-PCA</th>
+                        <th>Ours</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img style="vertical-align: top;"
+                                src="data/ted/single_iframe/8Dv2Hdf5TRg_S-16390_E-16598_H-337_W-336.mp4_sources.jpg">
+                        </td>
+                        <td colspan="4">
+                            <video controls muted loop style="vertical-align: top;">
+                                <source src="data/ted/single_iframe/8Dv2Hdf5TRg_S-16390_E-16598_H-337_W-336.mp4"
+                                    type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img style="vertical-align: top;"
+                                src="data/ted/single_iframe/cK74vhqzeeQ_S-6322_E-6591_H-316_W-316.mp4_sources.jpg">
+                        </td>
+                        <td colspan="4">
+                            <video controls muted loop style="vertical-align: top;">
+                                <source src="data/ted/single_iframe/cK74vhqzeeQ_S-6322_E-6591_H-316_W-316.mp4"
+                                    type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img style="vertical-align: top;"
+                                src="data/ted/single_iframe/JKsHhXwqDqM_S-29401_E-29533_H-344_W-344.mp4_sources.jpg">
+                        </td>
+                        <td colspan="4">
+                            <video controls muted loop style="vertical-align: top;">
+                                <source src="data/ted/single_iframe/JKsHhXwqDqM_S-29401_E-29533_H-344_W-344.mp4"
+                                    type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img style="vertical-align: top;"
+                                src="data/ted/single_iframe/UMhLBPPtlrY_S-23040_E-23306_H-353_W-353.mp4_sources.jpg">
+                        </td>
+                        <td colspan="4">
+                            <video controls muted loop style="vertical-align: top;">
+                                <source src="data/ted/single_iframe/UMhLBPPtlrY_S-23040_E-23306_H-353_W-353.mp4"
+                                    type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Source image</th>
+                        <th>Driving video</th>
+                        <th>FOMM</th>
+                        <th>AA-PCA</th>
+                        <th>Ours</th>
+                    </tr>
+                </table>
+                <div class="col-md-12">
+                </div>
+
+                </br></br>
+                <div class="col-md-12">
+                    <h6 class="text-center">Driving video reconstruction with multiple source images</h6>
+                </div>
+                <table>
+                    <tr>
+                        <th>Source images</th>
+                        <th>Driving video</th>
+                        <th>Ours (single source)</th>
+                        <th>FOMM</th>
+                        <th>Ours</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img style="vertical-align: top;"
+                                src="data/ted/multi_iframe/halfbody_eval-ted_talk-0R9zjn9BBvA_S-6194_E-6354_H-625_W-626-000000.mp4_sources.jpg">
+                        </td>
+                        <td colspan="4">
+                            <video controls muted loop style="vertical-align: top;">
+                                <source
+                                    src="data/ted/multi_iframe/halfbody_eval-ted_talk-0R9zjn9BBvA_S-6194_E-6354_H-625_W-626-000000.mp4"
+                                    type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img style="vertical-align: top;"
+                                src="data/ted/multi_iframe/halfbody_eval-ted_talk-360bU-vBJOI_S-4334_E-4656_H-432_W-430-000000.mp4_sources.jpg">
+                        </td>
+                        <td colspan="4">
+                            <video controls muted loop style="vertical-align: top;">
+                                <source
+                                    src="data/ted/multi_iframe/halfbody_eval-ted_talk-360bU-vBJOI_S-4334_E-4656_H-432_W-430-000000.mp4"
+                                    type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img style="vertical-align: top;"
+                                src="data/ted/multi_iframe/halfbody_eval-ted_talk-cfzkBGgxXGE_S-25311_E-25497_H-388_W-388-000000.mp4_sources.jpg">
+                        </td>
+                        <td colspan="4">
+                            <video controls muted loop style="vertical-align: top;">
+                                <source
+                                    src="data/ted/multi_iframe/halfbody_eval-ted_talk-cfzkBGgxXGE_S-25311_E-25497_H-388_W-388-000000.mp4.mp4"
+                                    type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img style="vertical-align: top;"
+                                src="data/ted/multi_iframe/halfbody_eval-ted_talk-Kc6hkHGHQQc_S-1709_E-1884_H-503_W-503-000000.mp4_sources.jpg">
+                        </td>
+                        <td colspan="4">
+                            <video controls muted loop style="vertical-align: top;">
+                                <source
+                                    src="data/ted/multi_iframe/halfbody_eval-ted_talk-Kc6hkHGHQQc_S-1709_E-1884_H-503_W-503-000000.mp4.mp4"
+                                    type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Source images</th>
+                        <th>Driving video</th>
+                        <th>Ours (single source)</th>
+                        <th>FOMM</th>
+                        <th>Ours</th>
+                    </tr>
+                </table>
+                <div class="col-md-12">
+                </div>
+
+                </br></br>
+                <div class="col-md-12">
+                    <h6 class="text-center">Cross-identity motion transfer</h6>
+                </div>
+                <table>
+                    <tr>
+                        <th>Source images</th>
+                        <th>Driving video</th>
+                        <th>Ours (single source)</th>
+                        <th>FOMM</th>
+                        <th>Ours</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img style="vertical-align: top;" src="data/ted/cross_id_multi_iframe/sources_0.jpg">
+                        </td>
+                        <td colspan="4">
+                            <video controls muted loop style="vertical-align: top;">
+                                <source src="data/ted/cross_id_multi_iframe/0.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img style="vertical-align: top;"
+                                src="data/ted/cross_id_multi_iframe/sources_cfzkBGgxXGE_S-25311_E-25497_H-388_W-388.jpg">
+                        </td>
+                        <td colspan="4">
+                            <video controls muted loop style="vertical-align: top;">
+                                <source src="data/ted/cross_id_multi_iframe/cfzkBGgxXGE_S-25311_E-25497_H-388_W-388.mp4"
+                                    type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img style="vertical-align: top;" src="data/ted/cross_id_multi_iframe/sources_1.jpg">
+                        </td>
+                        <td colspan="4">
+                            <video controls muted loop style="vertical-align: top;">
+                                <source src="data/ted/cross_id_multi_iframe/output_1.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Source images</th>
+                        <th>Driving video</th>
+                        <th>Ours (single source)</th>
+                        <th>FOMM</th>
+                        <th>Ours</th>
+                    </tr>
+                </table>
+                <div class="col-md-12">
+                </div>
+
+                </br></br>
+                <div class="col-md-12">
+                    <h6 class="text-center">Keypoint location and strength visualization</h6>
+                </div>
+                <table>
+                    <tr>
+                        <td>
+                            <video controls muted loop style="vertical-align: top; width:48%;">
+                                <source
+                                    src="data/ted/kps/halfbody_eval-ted_talk-GIrfNWed1Mk_S-6747_E-6890_H-467_W-467-000000.mp4_kps.mp4"
+                                    type="video/mp4">
+                            </video>
+                            <video controls muted loop style="vertical-align: bottom; width:48%;">
+                                <source
+                                    src="data/ted/kps/halfbody_eval-ted_talk-o_U-_akINwQ_S-16444_E-16586_H-431_W-430-000000.mp4_kps.mp4"
+                                    type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <video controls muted loop style="vertical-align: top; width:48%;">
+                                <source
+                                    src="data/ted/kps/halfbody_eval-ted_talk-zbHe4RpgV80_S-20694_E-21047_H-403_W-403-000000.mp4_kps.mp4"
+                                    type="video/mp4">
+                            </video>
+                            <video controls muted loop style="vertical-align: top; width:48%;">
+                                <source
+                                    src="data/ted/kps/halfbody_eval-ted_talk-A2DzsgJSwcc_S-9831_E-10018_H-504_W-504-000000.mp4_kps.mp4"
+                                    type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                </table>
+                <div class="col-md-12">
+                </div>
+            </div>
+            </br>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <hr>
+                    <h5 class="text-center">Attention visualizations</h5>
+                    We dilate the attention maps with a square kernel of size 14x14 and only keep the regions with
+                    strength >
+                    0.5.</br>
+                    These surviving regions of attention are visualized in the videos below.
+                </div>
+                <table>
+                    <tr>
+                        <td>
+                            <video controls muted loop style="vertical-align: top; width: 50%;">
+                                <source src="data/th/attn/attn.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <video controls muted loop style="vertical-align: top;  width: 50%;">
+                                <source src="data/ted/attn/attn.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+</body>
+
+</html>
